@@ -11,6 +11,16 @@ const Task = ({ task }) => {
 
   const handleToggleCompletion = () => {
     dispatch(toggleCompletion(task))
+    toast.success('Task Completed', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light"
+    });
   }
 
   const handleDeleteClick = () => {
