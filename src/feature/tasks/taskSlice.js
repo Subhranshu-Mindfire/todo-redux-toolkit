@@ -23,6 +23,10 @@ const taskSlice =  createSlice(
       toggleCompletion:(state,action)=>{
         const index = state.tasks.findIndex((task)=>task.id == action.payload.id)
         state.tasks[index].completed = !state.tasks[index].completed
+      },
+      deleteTask:(state,action)=>{
+        const index = state.tasks.findIndex((task)=>task.id == action.payload.id)
+        state.tasks.splice(index,1)
       }
     }
   }
@@ -30,4 +34,4 @@ const taskSlice =  createSlice(
 
 
 export default taskSlice.reducer
-export const {addTask,toggleCompletion} = taskSlice.actions
+export const {addTask,toggleCompletion,deleteTask} = taskSlice.actions
