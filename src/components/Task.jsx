@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toggleCompletion, deleteTask, editTask } from '../feature/tasks/taskSlice'
+import { toast } from 'react-toastify'
 
 const Task = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false)
@@ -21,8 +22,32 @@ const Task = ({ task }) => {
   }
 
   const handleEditClick = () => {
-    dispatch(editTask({task, newTaskName}))
-    setIsEditing(false)
+    if (newTaskName.length == 0) {
+      toast.error('Task Can Not Be Empty', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light"
+      });
+    }
+    else{
+      dispatch(editTask({task, newTaskName}))
+      setIsEditing(false)
+      toast.success('Task Edited Successfully', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light"
+      });
+    }
   }
 
   return (

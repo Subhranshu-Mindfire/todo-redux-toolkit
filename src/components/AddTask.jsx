@@ -10,7 +10,6 @@ function AddTask() {
 
   const handleAddClick = () => {
     if (taskName.length == 0) {
-      console.log("Hii")
       toast.error('Task Can Not Be Empty', {
             position: "top-right",
             autoClose: 5000,

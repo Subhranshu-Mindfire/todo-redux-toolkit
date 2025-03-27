@@ -7,8 +7,7 @@ const initialState = {
       taskName: "test",
       completed: false
     }
-  ],
-  no: 10
+  ]
 }
 
 const taskSlice =  createSlice(
