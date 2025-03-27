@@ -1,10 +1,9 @@
 import React from 'react'
+import TaskList from './components/TaskList'
 
 const App = () => {
   return (
-    <>App
-     <div className="text-center">Hello World</div>
-    </>
+    <TaskList />
   )
 }
 
