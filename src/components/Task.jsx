@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { toggleCompletion, deleteTask, editTask } from '../feature/tasks/taskSlice'
 import { toast } from 'react-toastify'
@@ -6,6 +6,11 @@ import { toast } from 'react-toastify'
 const Task = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [newTaskName, setTaskNewName] = useState(task.taskName);
+
+  useEffect(() => {
+    setTaskNewName(task.taskName)
+  }, [isEditing])
+  
 
   const dispatch = useDispatch()
 
