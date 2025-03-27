@@ -10,17 +10,32 @@ const Task = ({ task }) => {
   const dispatch = useDispatch()
 
   const handleToggleCompletion = () => {
+    if (!task.completed) {
+      toast.success('Task Marked Completed', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light"
+      });
+    }
+    else{
+      toast.success('Task Marked Incomplete', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light"
+      });
+    }
     dispatch(toggleCompletion(task))
-    toast.success('Task Completed', {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light"
-    });
+    
   }
 
   const handleDeleteClick = () => {
