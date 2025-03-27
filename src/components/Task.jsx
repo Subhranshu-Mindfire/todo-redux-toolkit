@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { toggleCompletion, deleteTask } from '../feature/tasks/taskSlice'
+import { toggleCompletion, deleteTask, editTask } from '../feature/tasks/taskSlice'
 
 const Task = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false)
@@ -20,6 +20,11 @@ const Task = ({ task }) => {
     setIsEditing(!isEditing)
   }
 
+  const handleEditClick = () => {
+    dispatch(editTask({task, newTaskName}))
+    setIsEditing(false)
+  }
+
   return (
     <div className='d-flex justify-content-center'>
       {
@@ -30,7 +35,7 @@ const Task = ({ task }) => {
                 onChange={(e) => setTaskNewName(e.target.value)}
                 placeholder="Enter new task name" />
             </div>
-            <div className='btn btn-lg btn-outline-primary mx-2'>Save</div>
+            <div onClick={() => handleEditClick()} className='btn btn-lg btn-outline-primary mx-2'>Save</div>
             <div onClick={() => handleToggleEdit()} className=' btn btn-lg btn-outline-secondary text-center'> Cancel</div>
           </div>
         ) : (
